@@ -1,0 +1,30 @@
+<html>
+<body>
+    <div class="login">
+       <h1>FWI Prediction</h1>
+   
+        <!-- Main Input For Receiving Query to our ML -->
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+           <input type="text" name="Age" placeholder="Age" required="required" /><br>
+           <input type="text" name="sex" placeholder="sex" required="required" /><br>
+           <input type="text" name="cp" placeholder="cp" required="required" /><br>
+           <input type="text" name="trestbps" placeholder="trestbps" required="required" /><br>
+           <input type="text" name="chol" placeholder="chol" required="required" /><br>
+           <input type="text" name="fbs" placeholder="fbs" required="required" /><br>
+           <input type="text" name="restecg" placeholder="restecg" required="required" /><br>
+           <input type="text" name="thalach" placeholder="thalach" required="required" /><br>
+            <input type="text" name="exang" placeholder="exang" required="required" /><br>
+           <input type="text" name="oldpeak" placeholder="oldpeak" required="required" /><br>
+           <input type="text" name="slope" placeholder="slope" required="required" /><br>
+           <input type="text" name="ca" placeholder="ca" required="required" /><br>
+           <input type="text" name="thal" placeholder="thal" required="required" /><br>
+   
+   
+   
+           <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+       </form>
+    <h2>
+       THE FWI prediction is {{results}}
+    </h2>
+   <body>
+</html>
