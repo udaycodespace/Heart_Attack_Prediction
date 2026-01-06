@@ -7,8 +7,8 @@ from sklearn.preprocessing import StandardScaler
 application = Flask(__name__)
 app=application
 
-## import ridge regressor and standard scaler pickle
-ridge_model=pickle.load(open('Models/ridge.pkl','rb'))
+## import gridsearchcv regressor and standard scaler pickle
+grid_search_cv=pickle.load(open('Models/gridsearchcv.pkl','rb'))
 standard_scaler=pickle.load(open('Models/scaler.pkl','rb'))
 
 @app.route("/")
@@ -35,7 +35,7 @@ def predict_datapoint():
         
 
         new_data_scaled=standard_scaler.transform([[Age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
-        result=ridge_model.predict(new_data_scaled)
+        result=grid_search_cv.predict(new_data_scaled)
 
         return render_template('home.html',results=result[0])
 
