@@ -1,5 +1,7 @@
 import pickle
 from flask import Flask,request,jsonify,render_template
+from flask_cors import CORS, cross_origin
+
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
