@@ -1,14 +1,11 @@
 import pickle
 from flask import Flask,request,jsonify,render_template
-from flask_cors import CORS
-
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 application = Flask(__name__)
 app=application
-CORS(app) 
 
 ## import gridsearchcv regressor and standard scaler pickle
 grid_search_cv=pickle.load(open('Models/gridsearchcv.pkl','rb'))
@@ -40,7 +37,7 @@ def predict_datapoint():
         new_data_scaled=standard_scaler.transform([[Age,sex,cp,trestbps,chol,fbs,restecg,thalach,exang,oldpeak,slope,ca,thal]])
         result=grid_search_cv.predict(new_data_scaled)
 
-        return jsonify({'prediction': int(result[0])})
+        return render_template('home.html',results=result[0])
 
         
     else:
